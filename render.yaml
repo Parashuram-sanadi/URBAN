@@ -1,0 +1,35 @@
+# Render Blueprint Configuration
+# This file allows you to deploy both frontend and backend services on Render
+# For more information: https://render.com/docs/blueprint-spec
+
+services:
+  # Backend Service (Node.js API)
+  - type: web
+    name: urban-guide-backend
+    env: node
+    plan: free  # Change to 'starter' or higher for production
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000  # Render assigns a port dynamically, but this is a fallback
+      - key: MONGO_URI
+        sync: false  # Set this in Render dashboard with your MongoDB connection string
+      - key: FRONTEND_URL
+        sync: false  # Will be set to your frontend Render URL after deployment
+      - key: JWT_SECRET
+        generateValue: true  # Render will generate a random value
+
+  # Frontend Service (Static Site)
+  - type: web
+    name: urban-guide-frontend
+    env: static
+    plan: free  # Change to 'starter' or higher for production
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        sync: false  # Set this to your backend Render URL after backend is deployed
+

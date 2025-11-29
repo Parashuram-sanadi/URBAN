@@ -12,7 +12,7 @@ export default function TemplesPage() {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await axios.get("API_ENDPOINTS.TEMPLES");
+        const res = await axios.get(API_ENDPOINTS.TEMPLES);
         setItems(res.data);
       } finally {
         setLoading(false);

@@ -12,7 +12,7 @@ export default function GovernmentOfficesPage() {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await axios.get("API_ENDPOINTS.GOV_OFFICES");
+        const res = await axios.get(API_ENDPOINTS.GOV_OFFICES);
         setItems(res.data);
       } finally {
         setLoading(false);

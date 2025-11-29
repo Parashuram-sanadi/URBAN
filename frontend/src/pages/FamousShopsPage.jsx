@@ -12,7 +12,7 @@ export default function FamousShopsPage() {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await axios.get("API_ENDPOINTS.FAMOUS_SHOPS");
+        const res = await axios.get(API_ENDPOINTS.FAMOUS_SHOPS);
         setItems(res.data);
       } finally {
         setLoading(false);

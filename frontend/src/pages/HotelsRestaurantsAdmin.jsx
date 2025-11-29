@@ -46,7 +46,7 @@ export default function HotelsRestaurantsAdmin() {
 
   const load = async () => {
     try {
-      const res = await axios.get("API_ENDPOINTS.HOTELS");
+      const res = await axios.get(API_ENDPOINTS.HOTELS);
       setItems(res.data);
     } catch (e) {
       console.error("Failed to load hotels/restaurants:", e);
@@ -97,12 +97,12 @@ export default function HotelsRestaurantsAdmin() {
     const payload = toPayload();
     try {
       if (editingId) {
-        await axios.put(`API_ENDPOINTS.HOTELS/${editingId}`, payload, {
+        await axios.put(`${API_ENDPOINTS.HOTELS}/${editingId}`, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert(`${formType === "hotel" ? "Hotel" : "Restaurant"} updated successfully!`);
       } else {
-        await axios.post("API_ENDPOINTS.HOTELS", payload, {
+        await axios.post(API_ENDPOINTS.HOTELS, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert(`${formType === "hotel" ? "Hotel" : "Restaurant"} created successfully!`);
@@ -147,7 +147,7 @@ export default function HotelsRestaurantsAdmin() {
   const remove = async (id) => {
     if (!window.confirm("Delete this item?")) return;
     try {
-      await axios.delete(`API_ENDPOINTS.HOTELS/${id}`, {
+      await axios.delete(`${API_ENDPOINTS.HOTELS}/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       await load();

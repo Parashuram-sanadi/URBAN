@@ -15,7 +15,7 @@ export default function EducationDetail() {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await axios.get(`API_ENDPOINTS.EDUCATION/${id}`);
+        const res = await axios.get(`${API_ENDPOINTS.EDUCATION}/${id}`);
         setE(res.data);
       } finally {
         setLoading(false);

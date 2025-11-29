@@ -38,7 +38,7 @@ export default function ATMSpotsAdmin() {
 
   const load = async () => {
     try {
-      const res = await axios.get("API_ENDPOINTS.ATM_SPOTS");
+      const res = await axios.get(API_ENDPOINTS.ATM_SPOTS);
       setItems(res.data);
     } catch (e) {
       console.error("Failed to load ATM spots:", e);
@@ -82,12 +82,12 @@ export default function ATMSpotsAdmin() {
     const payload = toPayload();
     try {
       if (editingId) {
-        await axios.put(`API_ENDPOINTS.ATM_SPOTS/${editingId}`, payload, {
+        await axios.put(`${API_ENDPOINTS.ATM_SPOTS}/${editingId}`, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("ATM spot updated successfully!");
       } else {
-        await axios.post("API_ENDPOINTS.ATM_SPOTS", payload, {
+        await axios.post(API_ENDPOINTS.ATM_SPOTS, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("ATM spot created successfully!");
@@ -123,7 +123,7 @@ export default function ATMSpotsAdmin() {
   const remove = async (id) => {
     if (!window.confirm("Delete this ATM spot?")) return;
     try {
-      await axios.delete(`API_ENDPOINTS.ATM_SPOTS/${id}`, {
+      await axios.delete(`${API_ENDPOINTS.ATM_SPOTS}/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       await load();

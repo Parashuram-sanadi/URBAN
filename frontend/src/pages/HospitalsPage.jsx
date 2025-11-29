@@ -12,7 +12,7 @@ export default function HospitalsPage() {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await axios.get("API_ENDPOINTS.HOSPITALS");
+        const res = await axios.get(API_ENDPOINTS.HOSPITALS);
         setItems(res.data);
       } finally {
         setLoading(false);

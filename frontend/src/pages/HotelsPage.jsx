@@ -12,7 +12,7 @@ export default function HotelsPage() {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await axios.get("API_ENDPOINTS.HOTELS");
+        const res = await axios.get(API_ENDPOINTS.HOTELS);
         setItems(res.data);
       } finally {
         setLoading(false);

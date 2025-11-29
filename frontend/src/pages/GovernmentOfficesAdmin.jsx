@@ -25,7 +25,7 @@ export default function GovernmentOfficesAdmin() {
   }, [navigate]);
 
   const load = async () => {
-    const res = await axios.get("API_ENDPOINTS.GOV_OFFICES");
+    const res = await axios.get(API_ENDPOINTS.GOV_OFFICES);
     setItems(res.data);
   };
 
@@ -60,10 +60,10 @@ export default function GovernmentOfficesAdmin() {
     const body = payload();
     try {
       if (editingId) {
-        await axios.put(`API_ENDPOINTS.GOV_OFFICES/${editingId}`, body);
+        await axios.put(`${API_ENDPOINTS.GOV_OFFICES}/${editingId}`, body);
         alert("Government office updated successfully!");
       } else {
-        await axios.post("API_ENDPOINTS.GOV_OFFICES", body);
+        await axios.post(API_ENDPOINTS.GOV_OFFICES, body);
         alert("Government office created successfully!");
       }
       setForm(empty);
@@ -108,7 +108,7 @@ export default function GovernmentOfficesAdmin() {
 
   const remove = async (id) => {
     if (!window.confirm("Delete this office?")) return;
-    await axios.delete(`API_ENDPOINTS.GOV_OFFICES/${id}`);
+    await axios.delete(`${API_ENDPOINTS.GOV_OFFICES}/${id}`);
     await load();
   };
 

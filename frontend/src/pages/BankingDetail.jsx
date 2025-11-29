@@ -15,7 +15,7 @@ export default function BankingDetail() {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await axios.get(`API_ENDPOINTS.BANKING/${id}`);
+        const res = await axios.get(`${API_ENDPOINTS.BANKING}/${id}`);
         setB(res.data);
       } finally {
         setLoading(false);

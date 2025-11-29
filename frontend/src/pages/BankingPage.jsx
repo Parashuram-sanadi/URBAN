@@ -12,7 +12,7 @@ export default function BankingPage() {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await axios.get("API_ENDPOINTS.BANKING");
+        const res = await axios.get(API_ENDPOINTS.BANKING);
         setItems(res.data);
       } finally {
         setLoading(false);

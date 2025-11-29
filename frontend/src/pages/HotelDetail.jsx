@@ -15,7 +15,7 @@ export default function HotelDetail() {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await axios.get(`API_ENDPOINTS.HOTELS/${id}`);
+        const res = await axios.get(`${API_ENDPOINTS.HOTELS}/${id}`);
         setH(res.data);
       } finally {
         setLoading(false);

@@ -47,7 +47,7 @@ export default function EducationAdmin() {
 
   const load = async () => {
     try {
-      const res = await axios.get("API_ENDPOINTS.EDUCATION");
+      const res = await axios.get(API_ENDPOINTS.EDUCATION);
       setItems(res.data);
     } catch (e) {
       console.error("Failed to load educations:", e);
@@ -99,12 +99,12 @@ export default function EducationAdmin() {
     const payload = toPayload();
     try {
       if (editingId) {
-        await axios.put(`API_ENDPOINTS.EDUCATION/${editingId}`, payload, {
+        await axios.put(`${API_ENDPOINTS.EDUCATION}/${editingId}`, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert(`${formType === "school" ? "School" : "College"} updated successfully!`);
       } else {
-        await axios.post("API_ENDPOINTS.EDUCATION", payload, {
+        await axios.post(API_ENDPOINTS.EDUCATION, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert(`${formType === "school" ? "School" : "College"} created successfully!`);
@@ -150,7 +150,7 @@ export default function EducationAdmin() {
   const remove = async (id) => {
     if (!window.confirm("Delete this item?")) return;
     try {
-      await axios.delete(`API_ENDPOINTS.EDUCATION/${id}`, {
+      await axios.delete(`${API_ENDPOINTS.EDUCATION}/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       await load();

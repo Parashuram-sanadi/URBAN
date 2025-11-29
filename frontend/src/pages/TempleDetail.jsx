@@ -15,7 +15,7 @@ export default function TempleDetail() {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await axios.get(`API_ENDPOINTS.TEMPLES/${id}`);
+        const res = await axios.get(`${API_ENDPOINTS.TEMPLES}/${id}`);
         setT(res.data);
       } finally {
         setLoading(false);

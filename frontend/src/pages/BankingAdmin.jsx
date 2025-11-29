@@ -39,7 +39,7 @@ export default function BankingAdmin() {
 
   const load = async () => {
     try {
-      const res = await axios.get("API_ENDPOINTS.BANKING");
+      const res = await axios.get(API_ENDPOINTS.BANKING);
       setItems(res.data);
     } catch (e) {
       console.error("Failed to load bankings:", e);
@@ -88,12 +88,12 @@ export default function BankingAdmin() {
     const payload = toPayload();
     try {
       if (editingId) {
-        await axios.put(`API_ENDPOINTS.BANKING/${editingId}`, payload, {
+        await axios.put(`${API_ENDPOINTS.BANKING}/${editingId}`, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("Bank updated successfully!");
       } else {
-        await axios.post("API_ENDPOINTS.BANKING", payload, {
+        await axios.post(API_ENDPOINTS.BANKING, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("Bank created successfully!");
@@ -134,7 +134,7 @@ export default function BankingAdmin() {
   const remove = async (id) => {
     if (!window.confirm("Delete this bank?")) return;
     try {
-      await axios.delete(`API_ENDPOINTS.BANKING/${id}`, {
+      await axios.delete(`${API_ENDPOINTS.BANKING}/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       await load();

@@ -12,7 +12,7 @@ export default function TravelAgenciesPage() {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await axios.get("API_ENDPOINTS.TRAVEL_AGENCIES");
+        const res = await axios.get(API_ENDPOINTS.TRAVEL_AGENCIES);
         setItems(res.data);
       } finally {
         setLoading(false);

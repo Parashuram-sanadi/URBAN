@@ -45,7 +45,7 @@ export default function HospitalsAdmin() {
   }, [navigate]);
 
   const load = async () => {
-    const res = await axios.get("API_ENDPOINTS.HOSPITALS");
+    const res = await axios.get(API_ENDPOINTS.HOSPITALS);
     setHospitals(res.data);
   };
 
@@ -96,12 +96,12 @@ export default function HospitalsAdmin() {
     const payload = toPayload();
     try {
       if (editingId) {
-        await axios.put(`API_ENDPOINTS.HOSPITALS/${editingId}`, payload, {
+        await axios.put(`${API_ENDPOINTS.HOSPITALS}/${editingId}`, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("Hospital updated successfully!");
       } else {
-        await axios.post("API_ENDPOINTS.HOSPITALS", payload, {
+        await axios.post(API_ENDPOINTS.HOSPITALS, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("Hospital created successfully!");
@@ -149,7 +149,7 @@ export default function HospitalsAdmin() {
 
   const remove = async (id) => {
     if (!window.confirm("Delete this hospital?")) return;
-    await axios.delete(`API_ENDPOINTS.HOSPITALS/${id}`, {
+    await axios.delete(`${API_ENDPOINTS.HOSPITALS}/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     await load();

@@ -12,7 +12,7 @@ export default function EducationPage() {
   useEffect(() => {
     const load = async () => {
       try {
-        const res = await axios.get("API_ENDPOINTS.EDUCATION");
+        const res = await axios.get(API_ENDPOINTS.EDUCATION);
         setItems(res.data);
       } finally {
         setLoading(false);

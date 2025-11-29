@@ -40,7 +40,7 @@ export default function TemplesAdmin() {
 
   const load = async () => {
     try {
-      const res = await axios.get("API_ENDPOINTS.TEMPLES");
+      const res = await axios.get(API_ENDPOINTS.TEMPLES);
       setItems(res.data);
     } catch (e) {
       console.error("Failed to load temples:", e);
@@ -90,12 +90,12 @@ export default function TemplesAdmin() {
     const payload = toPayload();
     try {
       if (editingId) {
-        await axios.put(`API_ENDPOINTS.TEMPLES/${editingId}`, payload, {
+        await axios.put(`${API_ENDPOINTS.TEMPLES}/${editingId}`, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("Temple updated successfully!");
       } else {
-        await axios.post("API_ENDPOINTS.TEMPLES", payload, {
+        await axios.post(API_ENDPOINTS.TEMPLES, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("Temple created successfully!");
@@ -137,7 +137,7 @@ export default function TemplesAdmin() {
   const remove = async (id) => {
     if (!window.confirm("Delete this temple?")) return;
     try {
-      await axios.delete(`API_ENDPOINTS.TEMPLES/${id}`, {
+      await axios.delete(`${API_ENDPOINTS.TEMPLES}/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       await load();

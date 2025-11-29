@@ -46,7 +46,7 @@ export default function FamousShopsAdmin() {
 
   const load = async () => {
     try {
-      const res = await axios.get("API_ENDPOINTS.FAMOUS_SHOPS");
+      const res = await axios.get(API_ENDPOINTS.FAMOUS_SHOPS);
       setItems(res.data);
     } catch (e) {
       console.error("Failed to load famous shops:", e);
@@ -97,12 +97,12 @@ export default function FamousShopsAdmin() {
     const payload = toPayload();
     try {
       if (editingId) {
-        await axios.put(`API_ENDPOINTS.FAMOUS_SHOPS/${editingId}`, payload, {
+        await axios.put(`${API_ENDPOINTS.FAMOUS_SHOPS}/${editingId}`, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert(`${formType === "mall" ? "Mall" : "Petrol Pump"} updated successfully!`);
       } else {
-        await axios.post("API_ENDPOINTS.FAMOUS_SHOPS", payload, {
+        await axios.post(API_ENDPOINTS.FAMOUS_SHOPS, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert(`${formType === "mall" ? "Mall" : "Petrol Pump"} created successfully!`);
@@ -147,7 +147,7 @@ export default function FamousShopsAdmin() {
   const remove = async (id) => {
     if (!window.confirm("Delete this item?")) return;
     try {
-      await axios.delete(`API_ENDPOINTS.FAMOUS_SHOPS/${id}`, {
+      await axios.delete(`${API_ENDPOINTS.FAMOUS_SHOPS}/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       await load();

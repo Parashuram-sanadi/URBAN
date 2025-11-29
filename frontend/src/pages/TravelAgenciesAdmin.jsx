@@ -30,7 +30,7 @@ export default function TravelAgenciesAdmin() {
 
   const load = async () => {
     try {
-      const res = await axios.get("API_ENDPOINTS.TRAVEL_AGENCIES");
+      const res = await axios.get(API_ENDPOINTS.TRAVEL_AGENCIES);
       setItems(res.data);
     } catch (e) {
       console.error("Failed to load travel agencies:", e);
@@ -66,12 +66,12 @@ export default function TravelAgenciesAdmin() {
     const payload = toPayload();
     try {
       if (editingId) {
-        await axios.put(`API_ENDPOINTS.TRAVEL_AGENCIES/${editingId}`, payload, {
+        await axios.put(`${API_ENDPOINTS.TRAVEL_AGENCIES}/${editingId}`, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("Travel agency updated successfully!");
       } else {
-        await axios.post("API_ENDPOINTS.TRAVEL_AGENCIES", payload, {
+        await axios.post(API_ENDPOINTS.TRAVEL_AGENCIES, payload, {
           headers: { Authorization: `Bearer ${token}` },
         });
         alert("Travel agency created successfully!");
@@ -97,7 +97,7 @@ export default function TravelAgenciesAdmin() {
   const remove = async (id) => {
     if (!window.confirm("Delete this travel agency?")) return;
     try {
-      await axios.delete(`API_ENDPOINTS.TRAVEL_AGENCIES/${id}`, {
+      await axios.delete(`${API_ENDPOINTS.TRAVEL_AGENCIES}/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       await load();
